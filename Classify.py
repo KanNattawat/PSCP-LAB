@@ -1,17 +1,22 @@
 """ pscp """
-import json
+
+
 def main():
     """ main """
-    lst_student_id = []
-    lst_info = []
+    student_lst = []
+    pre_year = 0
     while True:
-        student_id = input()
-        if student_id == "END":
+        student_info = input()
+        if student_info == "END":
             break
-        lst_student_id.append(student_id)
-    for i in lst_student_id:
-        lst_info.append({i[0:2]: i[2:4]})
-    # lst_info.sort(key=int(.value))
-    print(lst_info)
+        student_lst.append(student_info[:4])
+    for i in sorted(set(student_lst)):
+        year = i[:2]
+        if pre_year != year:
+            print(year, int(i[2:4]), student_lst.count(i))
+        else:
+            print("--", int(i[2:4]), student_lst.count(i))
+        pre_year = year
+
 
 main()

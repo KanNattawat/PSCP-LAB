@@ -1,18 +1,30 @@
 """ pscp """
 
-def main(cnt_input):
-    """ main """
-    lst_country = []
-    dic_gold = {}
-    dic_silver = {}
-    dic_bronze = {}
-    dic_total = {}
-    for _ in range(cnt_input):
-        stats = input()
-        lst_country.append(stats[0:3])
-        dic_gold.update({stats[0:3]:int(stats[4])})
-        dic_silver.update({stats[0:3]:int(stats[6])})
-        dic_bronze.update({stats[0:3]:int(stats[8])})
-        dic_total.update({stats[0:3]:int(stats[4])+int(stats[6])+int(stats[8])})
 
-main(int(input()))
+def main():
+    """ main """
+    countries = dict()
+    for _ in range(int(input())):
+        xxx = input().split(" ")
+        countries[xxx[0]] = tuple(map(int, xxx[1:]))
+    countries_sort = sorted(
+        countries.items(), key=lambda a: sum(a[1]), reverse=True)
+    countries_sort.sort(key=lambda a: a[0])
+    countries_sort.sort(key=lambda a: a[1], reverse=True)
+    rank = 0
+    keep = 0
+    old = 0
+    for country, score in countries_sort:
+        score_sum = sum(score)
+        score = " ".join(map(str, score))
+        if score != old:
+            rank += keep
+            keep = 0
+            rank += 1
+        elif rank != 0:
+            keep += 1
+        print(rank, country, score, score_sum)
+        old = score
+
+
+main()
