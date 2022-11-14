@@ -2,7 +2,7 @@
 
 def main(base10):
     """main"""
-    lst = []
+    ans = ""
     if base10 == 0:
         return print("0")
     while True:
@@ -10,12 +10,10 @@ def main(base10):
             break
         if base10 % 2 != 0:
             base10 //= 2
-            lst.append("1")
+            ans += "1"
         else:
             base10 //= 2
-            lst.append("0")
-    lst.reverse()
-    ans = "".join(lst)
-    print(ans)
+            ans += "0"
+    print(ans[-1::-1])
 
 main(int(input()))
