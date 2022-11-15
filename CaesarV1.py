@@ -1,12 +1,21 @@
 """ pscp """
 
-def main(shift, txt):
+def main(num, txt):
     """ main """
-    txt = txt.replace(".", "")
-    txt = txt.split(" ")
-    lst = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'\
-, 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    char = "abcdefghijklmnopqrstuvwxyz"
+    char += char
+    ans = ""
     for i in txt:
-        
+        while num > 26:
+            num -= 26
+        if i == " ":
+            ans += " "
+        elif i.isupper():
+            ans += (char[char.find(i.lower())+num]).upper()
+        elif i.islower():
+            ans += char[char.find(i)+num]
+        else:
+            ans += i
+    return ans
 
-main(int(input()), input())
+print(main(int(input()), input()))
