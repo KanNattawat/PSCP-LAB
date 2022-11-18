@@ -1,5 +1,6 @@
 """pscp"""
- 
+
+
 def main(num):
     """main"""
     ans = False
@@ -9,10 +10,11 @@ def main(num):
                 ans = True
                 break
     if num == 0 or num == 1:
-        print("No")
+        print("NO")
     elif ans:
-        print("No")
+        print("NO")
     else:
-        print("Yes")
- 
+        print("YES")
+
+
 main(int(input()))
