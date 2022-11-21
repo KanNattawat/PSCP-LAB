@@ -16,6 +16,6 @@ def main():
         milk += got_free
         bottle_y -= (bottle_y // every_y) * every_y
         bottle_y += got_free
-    print(milk)
+    print(int(milk))
 
 main()
