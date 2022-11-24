@@ -1,10 +1,13 @@
 """pscp"""
+
+
 def main():
     """main"""
     total_of_time = 0
     avg_time = 0
     sett = set()
     cal(total_of_time, avg_time, sett)
+
 
 def cal(total_of_time, avg_time, sett):
     """cal"""
@@ -17,7 +20,7 @@ def cal(total_of_time, avg_time, sett):
     if locate_ip.find("]") != -1:
         locate_with -= 1
     while locate_ip[locate_with-con].isnumeric() or locate_ip[locate_with-con] == "." \
-or locate_ip[locate_with-con] == ":":
+            or locate_ip[locate_with-con] == ":":
         con += 1
     locate_first_ip = locate_with - con
     ip_adress = locate_ip[locate_first_ip:locate_with].replace(" ", "")
@@ -53,6 +56,7 @@ def loop(total_of_time, avg_time, sett, ip_adress):
 
     out(received, lost, lost_percent, avg_time, sett)
 
+
 def out(received, lost, lost_percent, avg_time, sett):
     """out"""
     lost_percent = str(lost_percent) + "%"
@@ -61,11 +65,12 @@ def out(received, lost, lost_percent, avg_time, sett):
     minping = str(*sett[:1])
     maxping = str(*sett[-1::])
 
-    print("    Packets: Sent = 4,", "Received =", str(received)+",", "Lost =", str(lost), \
-"(%s loss)," %lost_percent)
+    print("    Packets: Sent = 4,", "Received =", str(received)+",", "Lost =", str(lost),
+          "(%s loss)," % lost_percent)
     if received != 0:
         print("Approximate round trip times in milli-seconds:")
-        print("    Minimum = "+minping+"ms"+", Maximum = "+maxping+"ms"+", Average = "\
-+avg_time+"ms")
+        print("    Minimum = "+minping+"ms"+", Maximum = "+maxping+"ms"+", Average = "
+              + avg_time+"ms")
+
 
 main()
