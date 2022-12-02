@@ -1,5 +1,6 @@
 """ fibnal00 """
 
+
 def main():
     month = int(input())
     cost = float(input())
@@ -21,4 +22,6 @@ def main():
             total = total
         lst.append(total)
     print(sum(lst))
+
+
 main()
