@@ -4,33 +4,19 @@
 def main():
     """ main """
     while True:
-        check = 0
-        stop = []
         otp = input()
         if otp == '0':
             break
-        for i in otp:
-            if otp.count(i) == 2 and i not in stop:
-                check += 2
-                stop.append(i)
-            elif otp.count(i) == 3 and i not in stop:
-                check += 3
-                stop.append(i)
-        if len(otp) == 4:
-            if check == 2:
-                print('Valid')
-            else:
-                print('Invalid')
-        elif len(otp) == 6:
-            if check == 4 or check == 3:
-                print('Valid')
-            else:
-                print('Invalid')
+        num_count_list = [otp.count(str(i)) for i in range(10)]
+        if len(otp) == 4 and num_count_list.count(2) == 1:
+            print('Valid')
+        elif len(otp) == 6 and (num_count_list.count(2) == 2 or num_count_list.count(3) == 1):
+            print('Valid')
+        elif len(otp) == 8 and (num_count_list.count(2) == 3 or num_count_list.count(3) == 2):
+            print('Valid')
         else:
-            if check == 6:
-                print('Valid')
-            else:
-                print('Invalid')
+            print('Invalid')
+        # print(num_count_list)
 
 
 main()
